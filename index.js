@@ -30,11 +30,8 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 
-function getFinals(ar) {
-    // let finals = []
-    return ar.filter(obj => obj.Stage === 'Final')//.forEach(obj => finals.push(obj['Home Team Name'], obj['Away Team Name']));
-    // return ar;
-}
+const getFinals = ar => ar.filter(obj => obj.Stage === 'Final')
+
 
 
 
