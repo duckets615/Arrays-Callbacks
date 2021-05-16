@@ -57,8 +57,7 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-const getWinners = ar => ar.filter(obj => obj['Home Team Goals'] > obj["Away Team Goals"]).map(obj => obj['Home Team Name'])
-
+const getWinners = getFinals => getFinals.map(obj => obj['Home Team Name'])
 
 
 
