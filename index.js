@@ -152,8 +152,38 @@ function getGoals(data) {
 /* 💪💪💪💪💪 Stretch 3: 💪💪💪💪💪
 Write a function called badDefense() that accepts a parameter `data` and calculates the team with the most goals scored against them per appearance (average goals against) in the World Cup finals */
 
-function badDefense(/* code here */) {
+function badDefense(data) {
+  let finals = getFinals(data);
+  let obj = {};
+  let max = 0;
+  let most = '';
 
+  finals.forEach(game => {
+    let homeTeam = game['Home Team Name'];
+    let awayTeam = game["Away Team Name"];
+
+    if (obj[homeTeam] === undefined) {
+      obj[homeTeam] = [1, game["Away Team Goals"]]
+    } else {
+      obj[homeTeam][0] += 1;
+      obj[homeTeam][1] += game["Away Team Goals"];
+    }
+    if (obj[awayTeam] === undefined) {
+      obj[awayTeam] = [1, game["Home Team Goals"]]
+    } else {
+      obj[awayTeam][0] += 1;
+      obj[awayTeam][1] += game["Home Team Goals"];
+    }
+  })
+  
+  for (let k in obj) {
+    obj[k] = +(obj[k][1] / obj[k][0]).toFixed(1);
+    if (obj[k] > max) {
+      max = obj[k];
+      most = k;
+    }
+  }
+  return most; 
 }
 
 
