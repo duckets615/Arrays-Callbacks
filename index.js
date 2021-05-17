@@ -109,21 +109,38 @@ Hint: use `.reduce` */
 
 
 /* 💪💪💪💪💪 Stretch 2: 💪💪💪💪💪 
-Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
+   Write a function called getGoals() that accepts a parameter `data` and returns the team with the most 
+//  goals score per appearance (average goals for) in the World Cup finals */
 
-function getGoals(/* code here */) {
+function getGoals(data) {    
+  let finals = getFinals(data);
+  let obj = {};
+  let max = 0
+  let most = '';
+  
+  finals.forEach(game => {
+    let homeTeam = game["Home Team Name"];
+    let awayTeam = game["Away Team Name"];
+    obj[homeTeam] === undefined ? obj[homeTeam] = 0 : obj[homeTeam] += game["Home Team Goals"];
+    obj[awayTeam] === undefined ? obj[awayTeam] = 0 : obj[awayTeam] += game["Away Team Goals"];
+  })
 
-    /* code here */
-
+  for (let k in obj) {
+    if (obj[k] > max) {
+      max = obj[k];
+      most = k;
+    }
+  }
+  return most
 }
+
+
 
 
 /* 💪💪💪💪💪 Stretch 3: 💪💪💪💪💪
 Write a function called badDefense() that accepts a parameter `data` and calculates the team with the most goals scored against them per appearance (average goals against) in the World Cup finals */
 
 function badDefense(/* code here */) {
-
-    /* code here */
 
 }
 
