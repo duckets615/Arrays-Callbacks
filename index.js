@@ -87,7 +87,7 @@ Use the higher order function getAverageGoals to do the following:
 */
 
 function getAverageGoals(ar) {
-    let goals = getFinals(ar).map(obj => obj["Home Team Goals"] + obj["Away Team Goals"])
+    let goals = getFinals(ar).map(obj => obj["Home Team Goals"] + obj["Away Team Goals"]);
     return (goals.reduce((acc,cur) => acc + cur) / goals.length).toFixed(2)
   }
 
@@ -99,11 +99,12 @@ Create a function called `getCountryWins` that takes the parameters `data` and `
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(/* code here */) {
-
-    /* code here */
-
-}
+// function getCountryWins(ar, init) {
+//     let wins = 0;
+//     getWinners(ar).forEach(team => wins += team.substring(0,3).toUpperCase() === init ? 1 : 0);
+//     return wins;
+//   }
+  const getCountryWins = (ar, init) => getWinners(ar).filter(team => team.substring(0,3).toUpperCase() === init).length
 
 
 
