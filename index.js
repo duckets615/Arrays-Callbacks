@@ -99,12 +99,20 @@ Create a function called `getCountryWins` that takes the parameters `data` and `
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-// function getCountryWins(ar, init) {
-//     let wins = 0;
-//     getWinners(ar).forEach(team => wins += team.substring(0,3).toUpperCase() === init ? 1 : 0);
-//     return wins;
-//   }
-  const getCountryWins = (ar, init) => getWinners(ar).filter(team => team.substring(0,3).toUpperCase() === init).length
+function getCountryWins(ar, init) {  
+    let wins = 0;  
+    getWinners(ar).forEach(team => wins += team.substring(0,3).toUpperCase() === init ? 1 : 0);
+    return wins;
+  }
+  // Wins variable created to keep track of cup wins;
+  // Use getWinners function to get an array of winners from every world cup;
+  // Initials are first 3 letters of team name capitalized;
+  // Loop through array with forEach, use substring to pull first 3 letter and compare to init argument;
+  // If matched, wins count increment by 1;
+  // return wins;
+  
+  // const getCountryWins = (ar, init) => getWinners(ar).filter(team => team.substring(0,3).toUpperCase() === init).length
+  
 
 
 
