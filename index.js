@@ -112,7 +112,7 @@ function getCountryWins(ar, init) {
   // return wins;
   
   // const getCountryWins = (ar, init) => getWinners(ar).filter(team => team.substring(0,3).toUpperCase() === init).length
-  
+
 
 
 
@@ -121,23 +121,23 @@ function getCountryWins(ar, init) {
 //  goals score per appearance (average goals for) in the World Cup finals */
 
 function getGoals(data) {    
-  let finals = getFinals(data);
-  let obj = {};
-  let max = 0
-  let most = '';
+  let finals = getFinals(data);  // array of all final games object.
+  let obj = {};  // object to store goals scored.
+  let max = 0    // max average goals.
+  let most = ''; // placeholder for team with most average goals. 
 
   finals.forEach(game => {
-    let homeTeam = game["Home Team Name"];
-    let awayTeam = game["Away Team Name"];
+    let homeTeam = game["Home Team Name"];  // team name variable
+    let awayTeam = game["Away Team Name"];  // team name variable
 
     if (obj[homeTeam] === undefined) {
-      obj[homeTeam] = [1, game["Home Team Goals"]];
+      obj[homeTeam] = [1, game["Home Team Goals"]]; // if object key doesn't exist, create it with value of array with games played and goals
     } else {
-      obj[homeTeam][0] += 1;
-      obj[homeTeam][1] += game["Home Team Goals"];
+      obj[homeTeam][0] += 1; // if object key exist, increment # games played in [0] idx
+      obj[homeTeam][1] += game["Home Team Goals"]; // if key exist add goals scored in finals to total scored goals
     }
-
-    if (obj[awayTeam] === undefined) {
+                                          
+    if (obj[awayTeam] === undefined) {    // Same as above section only with away teams
       obj[awayTeam] = [1, game["Away Team Goals"]];
     } else {
       obj[awayTeam][0] += 1;
@@ -145,14 +145,14 @@ function getGoals(data) {
     }
   })
 
-  for (let k in obj) {
-    obj[k] = +(obj[k][1] / obj[k][0]).toFixed(1)
-    if (obj[k] > max) {
-      max = obj[k];
-      most = k
+  for (let k in obj) {           // loop through object
+    obj[k] = +(obj[k][1] / obj[k][0]).toFixed(1) // change key value to average goal per game  idx [1] / [0]
+    if (obj[k] > max) { // check if average goals scored is greater than current max average goals
+      max = obj[k]; // if it is, average goals scored become the new max;
+      most = k // team name is replaced with current;
     }
   }
-  return most;
+  return most; // return team name of most average goals scored; 
 }
 
 
